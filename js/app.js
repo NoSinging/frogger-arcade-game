@@ -1,7 +1,10 @@
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function(row) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
+    this.v = 100;
+    this.x = 0;
+    this.row = row;
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
@@ -14,11 +17,12 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    this.x = this.x + this.v * dt;
 };
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.row*83-10);
 };
 
 // Now write your own player class
@@ -28,7 +32,9 @@ var Player = function() {
 //ToDo
 };
 
-Player.prototype.update = function(dt) {};
+Player.prototype.update = function(dt) {
+
+};
 
 Player.prototype.render = function() {};
 
@@ -38,7 +44,11 @@ Player.prototype.handleInput = function() {};
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-allEnemies = [new Enemy];
+allEnemies = [
+    new Enemy(1),
+    new Enemy(2),
+    new Enemy(3)
+    ];
 
 player = new Player;
 
