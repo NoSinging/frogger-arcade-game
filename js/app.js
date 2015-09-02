@@ -57,7 +57,13 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(action) {
     if (action == 'up') {
         this.row--;
-    };
+    } else if (action == 'down') {
+        this.row++;
+    } else if (action == 'right') {
+        this.col++;
+    } else if (action == 'left') {
+        this.col--;
+    } 
 };
 
 
