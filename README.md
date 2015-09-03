@@ -1,6 +1,6 @@
-frontend-nanodegree-arcade-game
+frogger-arcade-game
 ===============================
 
-Students should use this rubric: https://www.udacity.com/course/viewer#!/c-ud015/l-3072058665/m-3072588797
+Project from Object Oriented JavaScript course at https://www.udacity.com/
 
-for self-checking their submission.
+Gotta love the fantastic people at udacity
