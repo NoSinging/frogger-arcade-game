@@ -31,7 +31,11 @@ Enemy.prototype.render = function() {
 // Rest the enemy x position and velocity
 Enemy.prototype.resetPosition = function() {
     this.x = -300 * Math.random();
-    this.velocity = 100 * Math.random() + 100;
+    this.velocity = 150 * Math.random() + 100;
+};
+
+Enemy.prototype.getPosition = function() {
+    return [Math.floor(this.x/101), this.row];
 };
 
 
@@ -39,8 +43,7 @@ Enemy.prototype.resetPosition = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function() {
-    this.col = 2;
-    this.row = 5;
+    this.resetPosition();
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/char-boy.png';
@@ -50,20 +53,31 @@ Player.prototype.update = function(dt) {
 
 };
 
+Player.prototype.getPosition = function() {
+    return [this.col, this.row];
+};
+
+// Rest the player x position and velocity
+Player.prototype.resetPosition = function() {
+    this.col = 2;
+    this.row = 5;
+};
+
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.col*101, this.row*83-10)
 };
 
 Player.prototype.handleInput = function(action) {
-    if (action == 'up') {
+    if (action == 'up' && this.row >0) {
         this.row--;
-    } else if (action == 'down') {
+    } else if (action == 'down' && this.row <5) {
         this.row++;
-    } else if (action == 'right') {
+    } else if (action == 'right' && this.col <4) {
         this.col++;
-    } else if (action == 'left') {
+    } else if (action == 'left' && this.col >0) {
         this.col--;
     } 
+    //To Do restrict motion to the canvass
 };
 
 
